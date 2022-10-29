@@ -64,7 +64,7 @@ app.get("/UsuarioPorId", (request, response) => {
 //metodo get para obtener o buscar 1 vehiculo por placa
 app.get("/VehiculoPorPlaca", (request, response) => {
   vehiculoModelo.find(
-    { placa: request.body.placa | request.param("placa") },
+    { placa: request.param("placa") },
     function (error, placas) {
       response.send(placas);
     }
@@ -151,7 +151,7 @@ app.delete("/EliminarUsuario", function (request, response) {
 //metodo delete para eliminar un vehiculo
 app.delete("/EliminarVehiculo", function (request, response) {
   vehiculoModelo.deleteOne(
-    { placa: request.body.placa | request.param("placa") },
+    { placa: request.param("placa") },
     function (error, placa) {
       if (error) {
         response.send("Error en eliminar vehiculo");
